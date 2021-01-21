@@ -9,3 +9,20 @@ const usersArray = [
   {name: 'Liam', email: 'liam@mail.com', age: 15, status: true},
   {name: 'Wille', email: 'wille@mail.com', age: 9, status: false}
 ]
+
+// hämta ut ett specifikt värde
+// console.log(usersArray[1].name);
+
+// FOR LOOPAR
+
+// Loopa ett givet antal gånger
+// for (let i = 0; i < 5; i++) {
+//   // console.log(i);
+//   console.log(i, namesArray[i]);
+// }
+
+// console.log(namesArray.length);
+// Loopa igenom en hel array med en FOR
+for(let i = 0; i < namesArray.length ; i++) {
+  console.log(namesArray[i]);
+}
