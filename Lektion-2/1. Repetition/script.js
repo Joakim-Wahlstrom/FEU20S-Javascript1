@@ -133,3 +133,64 @@
 // NULL -saknar värde men är definierad
 // let value = null;
 // console.log(typeof value); // BUGG
+
+
+
+//  OBJECT - håller olika typer av data/attribut på en sak
+
+const car = {
+  märke: 'Volvo',
+  modelName: 'V70',
+  ramNummer: 1232345346,
+  växellåda: {
+    växel: 0,
+    växlaUpp() {
+      this.växellåda.växel + 1;
+    }
+  }
+}
+
+const user = {
+  id: 1,
+  firstName: 'Joakim',
+  lastName: 'Wahlström',
+  email: 'joakim@mail.com',
+  status: true
+}
+
+const jsonUser = {
+  "id": 1,
+  "firstName": "Joakim",
+  "lastName": "Wahlström",
+  "email": "joakim@mail.com",
+  "status": true
+}
+
+const json = JSON.stringify(user);
+// console.log(JSON.parse(json));
+
+// console.log(user.firstName);
+
+let hej = user.firstName;
+// console.log(hej);
+
+// destructure
+// const { firstName, lastName, status } = user;
+// console.log(firstName, lastName, status);
+
+// const { status: isLoggedIn } = user;
+// console.log(isLoggedIn);
+
+
+user.firstName = 'Hans'
+// user.address = 'gatan i västerås'
+user.address = {
+  street: 'gatan',
+  nr: 23,
+  zip: 72345,
+  city: 'västerås'
+}
+
+console.log(user)
+
+console.log(`Användaren heter ${user.firstName}, eller kanske ${hej}`);
