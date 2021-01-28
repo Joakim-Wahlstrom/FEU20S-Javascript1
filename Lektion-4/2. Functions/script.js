@@ -66,7 +66,7 @@ const fullName = function(firstName, lastName) {
   return fullName
 }
 
-let myName = fullName('Joakim', 'Wahlström');
+// let myName = fullName('Joakim', 'Wahlström');
 // console.log(myName)
 // console.log(fullName('Hans', 'Mattin-Lassei'))
 
@@ -115,16 +115,54 @@ const func = (callback) => {
   callback(value);
 }
 
-func(vadSom => { //här har jag automatiskt tillgång till parametern som skickas från den första functionen
-  // Här kan jag välja vad jag vill göra med den parametern
-  console.log(vadSom);
-  console.log(vadSom);
-  console.log(vadSom);
-})
+// func(vadSom => { //här har jag automatiskt tillgång till parametern som skickas från den första functionen
+//   // Här kan jag välja vad jag vill göra med den parametern
+//   console.log(vadSom);
+//   console.log(vadSom);
+//   console.log(vadSom);
+// })
 
 // Exempel på en callback funktion
 let names = ['Joakim', 'Hans', 'Jeanette', 'Jack']
 
-names.forEach(name => {
-  console.log(name)
-})
+// names.forEach(name => {
+//   console.log(name)
+// })
+
+
+/* 
+  METODER
+  -----------------------------
+  metoder är funktioner som är inbyggda på ett objekt
+
+*/
+
+// Exempel på metoder
+
+// array metod
+// names.forEach(name => {
+//   console.log(name)
+// })
+
+// string metod
+// let myName = names[0];
+// console.log(myName);
+
+// let upper = myName.toUpperCase();
+// console.log(upper);
+
+let user = {
+  firstName: 'Joakim',
+  lastName: 'Wahlström',
+  fullName() {
+    console.log(this);
+    return this.firstName + ' ' + this.lastName
+  }
+  // fullName: () => {
+  //   console.log(this)
+  //   return this.firstName + ' ' + this.lastName
+  // }
+}
+// console.log(this);
+console.log(user.fullName());
+// user.fullName();
