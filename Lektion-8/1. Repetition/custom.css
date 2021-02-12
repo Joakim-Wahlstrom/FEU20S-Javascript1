@@ -101,3 +101,7 @@ body {
 .success .fa-check-circle {
   visibility: visible;
 }
+#toc {
+  border: none;
+  outline: none;
+}
