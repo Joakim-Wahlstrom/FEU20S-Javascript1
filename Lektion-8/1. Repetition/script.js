@@ -29,8 +29,14 @@ const validate = (input) => {
           return true
         else
           return false
+      } else {
+        samePassword(password, password2);
+        if(samePassword(password, password2))
+        return true
+      else
+        return false
       }
-      break;     
+      // break;     
     case 'checkbox':
       validateCheck(input);
       if(validateCheck(input))
@@ -136,25 +142,30 @@ form.addEventListener('submit', e => {
 
   const errors = [];
 
-  validate(form[0])
-  validate(lastName)
-  validate(email)
-  validate(password)
+  validate(form[0]);
+  validate(lastName);
+  validate(email);
+  validate(password);
   // validate(password2)
-  samePassword(password, password2)
-  validate(toc)
+  samePassword(password, password2);
+  validate(toc);
 
   for(let i = 0; i < form.length; i++) {
     errors[i] = validate(form[i])
-    if(form[i].id === 'password2') {
-      errors.push(samePassword(password, password2))
-      console.log('pass2')
-    }
+    // if(form[i].id === 'password2') {
+    //   errors[i] = samePassword(password, password2)
+    //   // console.log('pass2')
+    // }
   }
 
-  console.log(errors)
+  // console.log(errors);
   if(!errors.includes(false)) {
     console.log('allt är bra!')
   }
+
+
+  // if(validate(firstName) && validate(lastName) && validate(email) && validate(password) && samePassword(password, password2), validate(toc)) {
+  //   console.log('Success')
+  // }
 
 })
