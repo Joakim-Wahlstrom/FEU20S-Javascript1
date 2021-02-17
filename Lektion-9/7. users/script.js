@@ -13,6 +13,7 @@ class User {
     this.lastName = lastName;
     this.email = email;
     this.id = Date.now().toString()
+    this.listener = false;
   }
 }
 
@@ -24,8 +25,26 @@ const createUser = (firstName, lastName, email) => {
   output.insertAdjacentHTML('beforeend', newUser(user))
   console.log(users);
 
+  const u = document.querySelectorAll('#output .user')
+  u.forEach(user => {
 
 
+    if(!user.listener) {
+      user.addEventListener('click', function() {
+        console.log('tar bort');
+        this.classList.add('slideout')
+        this.addEventListener('animationend', () => this.remove())
+        // setTimeout(() => {
+        //   this.remove()
+        // }, 500)
+        // console.log(users);
+      })
+    }
+    user.listener = true;
+
+
+
+  })
 }
 
 const renderUsers = () => {
