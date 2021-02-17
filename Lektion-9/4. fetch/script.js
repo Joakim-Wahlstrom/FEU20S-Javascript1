@@ -5,6 +5,11 @@ fetch('user.json')
     // console.log(data)
     return response.json()
   })
+  .then(data => {
+    console.log(data);
+    return fetch('todos.json');
+  })
+  .then(res => res.json())
   .then(data => console.log(data))
   .catch(err => {
     console.log(err)        // get oss nästan bara network error
