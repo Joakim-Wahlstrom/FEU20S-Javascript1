@@ -30,17 +30,27 @@ const getRequest = (url, cb) => {
   http.send();
 }
 
-console.log(1);
-console.log(2);
+// console.log(1);
+// console.log(2);
+// getRequest('user.json', (err, data) => {
+//   if(err) {
+//     console.log(err)
+//   } 
+//   else {
+//     // console.log(JSON.parse(data));           //Konvertera från json till js
+//     // console.log(JSON.stringify(data));       //Konvertera till json från js
+//     console.log(data)
+//   }
+// })
+// console.log(3);
+// console.log(4);
+
 getRequest('user.json', (err, data) => {
-  if(err) {
-    console.log(err)
-  } 
-  else {
-    // console.log(JSON.parse(data));           //Konvertera från json till js
-    // console.log(JSON.stringify(data));       //Konvertera till json från js
-    console.log(data)
-  }
+  console.log(data);
+  getRequest('todos.json', (err, data) => {
+    console.log(data);
+    getRequest('todos2.json', (err, data) => {
+      console.log(data);
+    })
+  })
 })
-console.log(3);
-console.log(4);
