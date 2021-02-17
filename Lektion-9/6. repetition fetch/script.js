@@ -24,9 +24,39 @@ const getJson = () => {
         </div>
         `
       })
-
     })
+}
 
+
+const getJsonAsync = async () => {
+
+  try{
+    const res = await fetch('json.json')
+    if(res.status !== 200) {
+      throw new Error('errrrroroorrrr');
+    }
+  
+    const data = await res.json();
+  
+    // return data;
+  
+    posts = data;
+    jsonOutput.innerHTML = ''
+      posts.forEach(post => {
+        jsonOutput.innerHTML += `
+        <div class="card">
+          <div class="card-body">
+            <h3 class="card-title">${post.title}</h3>
+            <p class="card-text">${post.body}</p>
+          </div>
+        </div>
+        `
+      })
+  }
+  catch(err) {
+    console.log(err)
+  }
+  
 }
 
 
@@ -35,10 +65,26 @@ const getJson = () => {
 
 
 
+// jsonBtn.addEventListener('click', () => {
+//   getJsonAsync()
+//     // .then(data => {
+//     //   posts = data;
+//     //   jsonOutput.innerHTML = ''
+//     //   posts.forEach(post => {
+//     //     jsonOutput.innerHTML += `
+//     //     <div class="card">
+//     //       <div class="card-body">
+//     //         <h3 class="card-title">${post.title}</h3>
+//     //         <p class="card-text">${post.body}</p>
+//     //       </div>
+//     //     </div>
+//     //     `
+//     //   })
+//     // })
+//     // .catch(err => console.log(err))
+// });
 
-jsonBtn.addEventListener('click', getJson);
-
-
+jsonBtn.addEventListener('click', getJsonAsync);
 
 
 
