@@ -65,8 +65,20 @@ body {
   margin-bottom: 1rem;
   margin-right: 2rem;
 }
+.current .deg .temp span {
+  font-weight: 500;
+}
 .current .deg .icon {
   background: url('http://openweathermap.org/img/wn/10d@2x.png');
   width: 100px;
   height: 100px;
+}
+.current .weather {
+  font-size: 2rem;
+  text-shadow: 3px 3px 5px #000;
+  font-weight: 700;
+}
+.current .hi-lo {
+  font-size: 1.3rem;
+  font-weight: 500;
 }
