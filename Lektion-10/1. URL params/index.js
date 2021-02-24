@@ -10,7 +10,7 @@ const listPosts = async () => {
   posts.forEach(post => {
     let html = `
     <div class="card my-3">
-      <a href="details.html" class="post p-3">
+      <a href="details.html?id=${post.id}" class="post p-3">
         <h3>${post.title}</h3>
         <p>${post.body.slice(0, 50)}...</p>
       </a>
