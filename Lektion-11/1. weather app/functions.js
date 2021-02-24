@@ -1,4 +1,4 @@
-const apiKey = '6d891d1faacdc8a5df9c2a160422b3e8'
+const apiKey = 'din egna api nyckel'
 export const getData = async (input) => {
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${input}&units=metric&appid=${apiKey}`
 
