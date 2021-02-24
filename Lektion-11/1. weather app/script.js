@@ -15,7 +15,9 @@ const displayResults = data => {
 
   document.querySelector('.temp').innerHTML = `${Math.round(data.main.temp)}<span>&degC</span>`;
   document.querySelector('.icon').style.background = `url('http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png')`;
-  
+
+  document.querySelector('.weather').innerText = data.weather[0].main;
+  document.querySelector('.hi-lo').innerHTML = `${Math.round(data.main.temp_max)}&degC / ${Math.round(data.main.temp_min)}&degC`
 }
 
 
@@ -24,7 +26,31 @@ form.addEventListener('submit', e => {
 
   getData(input.value)
     .then(data => {
-      console.log(data)
-      displayResults(data)
+      // console.log(data)
+      displayResults(data);
     })
+})
+
+window.addEventListener('load', () => {
+  let lat;
+  let lon;
+
+  if(navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(pos => {
+      console.log(pos);
+      lat = pos.coords.latitude;
+      lon = pos.coords.longitude;
+
+      const apiKey = '6d891d1faacdc8a5df9c2a160422b3e8'
+      fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`)
+        .then(res => res.json())
+        .then(data => {
+          displayResults(data);
+        })
+    })
+  }
+  else {
+    city.innerText = 'No geolocation data found'
+  }
+
 })
