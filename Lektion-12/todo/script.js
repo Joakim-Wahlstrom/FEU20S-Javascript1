@@ -9,7 +9,7 @@ const fetchTodos = () => {
     .then(res => res.json())
     .then(data => {
       todos = data;
-      console.log(todos);
+      // console.log(todos);
       listTodos();
     })
 }
@@ -19,6 +19,16 @@ fetchTodos();
 const listTodos = () => {
   output.innerHTML = '';
   todos.forEach(todo => {
+    // let template = `
+    // <div class="card p-3 my-2">
+    //   <div class="d-flex justify-content-between align-items-center">
+    //     <h3>${todo.title}</h3>
+    //     <button class="btn btn-danger">X</button>
+    //   </div>
+    // </div>
+    // `
+    // output.insertAdjacentHTML('beforeend', template)
+    // output.innerHTML += template;
     newTodo(todo);
   })
 }
@@ -47,3 +57,38 @@ const newTodo = (todo) => {
   output.appendChild(card);
 
 }
+
+
+const createTodo = (title) => {
+  fetch('https://jsonplaceholder.typicode.com/todos', {
+    method: 'POST',
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8'
+    },
+    body: JSON.stringify({
+      title,
+      completed: false
+    })
+  })
+  .then(res => res.json())
+  .then(data => {
+    console.log(data)
+
+    let newTodo = {
+      ...data,
+      id: Date.now().toString()
+    }
+    console.log(newTodo);
+    todos.unshift(newTodo);
+    listTodos();
+  })
+}
+
+
+form.addEventListener('submit', e => {
+  e.preventDefault();
+
+  createTodo(input.value);
+  // input.value = '';
+  form.reset();
+})
